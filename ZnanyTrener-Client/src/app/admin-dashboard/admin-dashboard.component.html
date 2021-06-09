@@ -1,0 +1,22 @@
+<div
+  id="main-container"
+  class=""
+  style="
+    max-height: calc(100vh - 200px); overflow-y: auto;
+    margin: 20px;
+    border: rgb(35, 232, 101);
+    border-style: solid;
+    background: rgb(245, 245, 245);
+    border-width: 2px;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 42px 38px -32px rgba(166, 166, 166, 1);
+  "
+>
+  <h2 style="margin-bottom: 100px;">Kliknij, aby usunąć</h2>
+  <div *ngFor="let user of users">
+      <div (click)="deleteUser(user)">
+        <app-coach-preview [coach]='user'></app-coach-preview>
+      </div>
+  </div>
+</div>

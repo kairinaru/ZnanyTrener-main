@@ -1,0 +1,44 @@
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import '../node_modules/alertifyjs/build/css/alertify.min.css';
+@import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+@import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
+@import '~ngx-toastr/toastr';
+
+input {
+    border-radius: 15px;
+}
+
+.form-control {
+    border-radius: 15px;
+    font-family: 'Helvetica';
+}
+
+.btn {
+    border-radius: 15px;
+    border-width: 2px;
+}
+
+h3 {
+    font-family: "Helvetica";
+}
+
+h1 {
+    font-family: 'Helvetica';
+}
+
+h2 {
+    font-family: 'Helvetica';
+}
+
+p {
+    font-family: 'Helvetica';
+}
+
+strong {
+    font-family: 'Helvetica';
+}
+
+.btn {
+    font-family: 'Helvetica';
+}

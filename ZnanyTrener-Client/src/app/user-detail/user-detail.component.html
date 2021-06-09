@@ -1,0 +1,109 @@
+<div id="main-container" class="container">
+  <div id="profile" class="container col">
+    <div id="avatar-section">
+      <img
+        id="avatar"
+        src="{{ user.photoUrl || '../../assets/user.png' }}"
+        alt="{{ user.userName }}"
+      />
+      <label id="username" for="avatar"
+        >{{ user.firstName.toUpperCase() }}
+        {{ user.lastName.toUpperCase() }}</label
+      >
+    </div>
+    <div class="container w-100 mt-4 text-center">
+      <p id="localization">
+        Miejscowość: <strong>{{ user.city.toUpperCase() }}</strong>
+      </p>
+      <p id="localization" *ngIf="isCoach()">
+        Specjalizacja:
+        <strong>{{ user.specialization.toLocaleUpperCase() }}</strong>
+      </p>
+      <p id="localization"></p>
+      <p id="localization"></p>
+      <p id="description">O mnie: {{ user.description }}</p>
+      <hr class="solid" />
+      <p
+        
+        id="localization"
+        style="cursor: pointer"
+        *ngIf="!isCollapsed && user.role=='Coach'"
+        [attr.aria-expanded]="!isCollapsed"
+        (click)="isCollapsed = !isCollapsed"
+        aria-controls="collapseBasic"
+      >
+        Pokaż ertyfikaty
+      </p>
+      <p
+        id="localization"
+        style="cursor: pointer"
+        *ngIf="isCollapsed && user.role=='Coach'"
+        [attr.aria-expanded]="!isCollapsed"
+        (click)="isCollapsed = !isCollapsed"
+        aria-controls="collapseBasic"
+      >
+        Schowaj ertyfikaty
+      </p>
+      <div id="collapseBasic" [collapse]="!isCollapsed" [isAnimated]="false">
+        <div class="w-100">
+            <div *ngIf="user.certificates.length==0">
+                <p id="localization">Brak certyfikatów.</p>
+            </div>
+          <div *ngFor="let certificate of user.certificates; let i = index;">
+            <p id="localization">
+              <strong style="cursor: pointer;">{{ i + 1}}. {{ certificate.number }} </strong>
+              Instytucja: {{ certificate.institution }} (od: {{ certificate.gainDate | date: 'mediumDate' }})
+            </p>            
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="solid" />
+    <div class="container mt-4 w-100 text-center">
+      <div class="row">
+        <div class="col-sm">
+          <p class="c-pointer" style="font-weight: normal">
+            Numer telefonu: <strong>{{ user.phoneNumber }}</strong>
+          </p>
+        </div>
+        <div class="col-sm">
+          <p class="c-pointer" style="font-weight: normal">
+            Adres e-mail: <strong>{{ user.email }}</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr class="solid" />
+    <div class="container mt-4 w-100 p-2 text-center">
+      <div>
+        <button
+          *ngIf="!isMe()"
+          id="follow-button"
+          class="btn btn-outline-success"
+          style="font-family: 'Roboto Slab'"
+          [routerLink]="['/visit/', user.id]"
+        >
+          Umów wizytę
+        </button>
+        <button
+          *ngIf="isMe() && logged.role=='Coach'"
+          id="follow-button"
+          class="btn btn-outline-success"
+          style="font-family: 'Roboto Slab'"
+          [routerLink]="['/visit/', user.id]"
+        >
+          Mój terminarz
+        </button>
+        <button
+          *ngIf="isMe() && logged.role=='User'"
+          id="follow-button"
+          class="btn btn-outline-success"
+          style="font-family: 'Roboto Slab'"
+          [routerLink]="['/my-schedule/']"
+        >
+          Mój terminarz
+        </button>      
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div
+  class="w-100 text-center"
+  style="padding-top: 5%; padding-inline-end: 40%; padding-inline-start: 40%"
+>
+  <div
+    class="bg-light text-center text-dark overflow-hidden"
+    style="
+      box-shadow: 0px 42px 38px -32px rgba(166, 166, 166, 1);
+      border-radius: 40px;
+      padding: 50px;
+      border-color: rgb(35, 232, 101);
+      border-style: solid;
+      border-width: 2px;
+    "
+  >
+    <form
+      id="form-login"
+      #loginForm="ngForm"
+      class="form-signin"
+      (ngSubmit)="login()"
+    >
+      <h2 style="margin-bottom: 50px; font-weight: bolder">Witaj ponownie!</h2>
+
+      <input
+        type="text"
+        [(ngModel)]="model.userName"
+        id="inputUsername"
+        class="form-control mb-3"
+        name="username"
+        placeholder="Nazwa użytkownika"
+        required
+        autofocus=""
+      />
+
+      <input
+        class="form-control mb-3"
+        [(ngModel)]="model.password"
+        type="password"
+        id="inputPassword"
+        name="password"
+        placeholder="Hasło"
+        required
+      />
+
+      <button
+        class="btn btn-secondary btn-block"
+        [disabled]="!loginForm.valid"
+        type="submit"
+      >
+        Zaloguj
+      </button>
+      <div style="width: 100%; margin-top: 20px">
+        <p>
+          Nie masz konta?<strong
+            [routerLink]="['/register']"
+            style="margin-left: 3px; cursor: pointer; color: rgb(35, 232, 101)"
+          >
+            Uwórz konto</strong
+          >
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

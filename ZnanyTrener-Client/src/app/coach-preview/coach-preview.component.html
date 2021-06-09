@@ -1,0 +1,13 @@
+<div class="coach-item" style="width: 100%; border-radius: 20px; cursor: pointer;">
+  <img name="photo" src="{{ coach.photoUrl || '../../assets/user.png' }}" width="80px" height="80px" style="border-radius: 90px; margin-right: 20px; margin-bottom: 10px;" />
+  <label for="photo" style="margin: auto"
+    ><div style="display: block; margin: auto">
+      <p style="margin: auto; font-weight: bold">
+        {{ coach.firstName.toUpperCase() }} {{ coach.lastName.toUpperCase() }}
+      </p>
+      <p style="margin: auto">
+        Miejscowość: <strong>{{ coach.city }}</strong>
+      </p>
+    </div></label
+>
+</div>

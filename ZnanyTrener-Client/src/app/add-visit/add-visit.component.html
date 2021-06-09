@@ -1,0 +1,49 @@
+<div
+  id="main-container"
+  class=""
+  style="
+    margin: 20px;
+    border: rgb(35, 232, 101);
+    border-style: solid;
+    background: rgb(245, 245, 245);
+    border-width: 2px;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 42px 38px -32px rgba(166, 166, 166, 1);
+  "
+>
+  <h2 style="margin-bottom: 100px;">Zaplanuj trening z: {{coach.firstName.toUpperCase()}} {{coach.lastName.toUpperCase()}}</h2>
+  <ngx-ts
+    [items]="items"
+    [periods]="periods"
+    [sections]="sections"
+    [events]="events"
+    [showBusinessDayOnly]="false"
+    [allowDragging]="false"
+    [minRowHeight]="100"
+    [text]="text"
+  ></ngx-ts>
+</div>
+
+<ng-template #preview>
+  <div class="modal-header">
+    <h3>Zaplanuj trening</h3>
+  </div>
+  <div class="modal-body">
+    <p>Rozpoczyna się: {{ selectedItem.start | date: 'medium'}}</p>
+    <p>Kończy się: {{ selectedItem.end | date: 'medium'}}</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-success" (click)="goToCheckout()">Przejdź do płatności</button>
+  </div>
+</ng-template>
+
+<ng-template #planned>
+  <div class="modal-header">
+    <h3>Zaplanowany trening</h3>
+  </div>
+  <div class="modal-body">
+    <p>Rozpoczyna się: {{ selectedItem.start | date: 'medium'}}</p>
+    <p>Kończy się: {{ selectedItem.end | date: 'medium'}}</p>
+  </div>
+</ng-template>

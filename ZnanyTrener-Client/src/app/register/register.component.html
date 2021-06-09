@@ -1,0 +1,281 @@
+<div id="centered-div">
+  <form
+    #editForm="ngForm"
+    id="form-login"
+    [formGroup]="registerForm"
+    class="text-center"
+    (ngSubmit)="register()"
+  >
+    <h1 class="mt-4">Utwórz konto</h1>
+    <div class="form-group">
+      <input
+        type="text"
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('userName').errors &&
+            registerForm.get('userName').touched
+        }"
+        class="form-control"
+        formControlName="userName"
+        placeholder="Nazwa użytkownika"
+        autofocus
+      />
+      <div class="invalid-feedback">Wprowadź nazwę użytkownika</div>
+    </div>
+
+    <!--Imię-->
+    <div class="form-group">
+      <input
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('firstName').errors &&
+            registerForm.get('firstName').touched
+        }"
+        class="form-control"
+        placeholder="Imię"
+        formControlName="firstName"
+      />
+      <div class="invalid-feedback">Wprowadź imię</div>
+    </div>
+
+    <!--Nazwisko-->
+    <div class="form-group">
+      <input
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('lastName').errors &&
+            registerForm.get('lastName').touched
+        }"
+        class="form-control"
+        placeholder="Nazwisko"
+        formControlName="lastName"
+      />
+      <div class="invalid-feedback">Wprowadź nawisko</div>
+    </div>
+
+    <!--Opis-->
+    <div class="form-group">
+      <input
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('description').errors &&
+            registerForm.get('description').touched
+        }"
+        class="form-control"
+        placeholder="Opis"
+        formControlName="description"
+      />
+      <div class="invalid-feedback">Wprowadź opis</div>
+    </div>
+
+    <!--Miasto-->
+    <div class="form-group">
+      <input
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('city').errors && registerForm.get('city').touched
+        }"
+        class="form-control"
+        placeholder="Miasto"
+        formControlName="city"
+      />
+      <div class="invalid-feedback">Wprowadź miasto</div>
+    </div>
+
+    <!--Numer telefonu-->
+    <div class="form-group">
+      <input
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('phoneNumber').errors &&
+            registerForm.get('phoneNumber').touched
+        }"
+        class="form-control"
+        placeholder="Numer telefonu"
+        formControlName="phoneNumber"
+      />
+      <div class="invalid-feedback">Wprowadź numer telefonu</div>
+    </div>
+
+    <!--Adres e-mail-->
+    <div class="form-group">
+      <input
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('email').errors &&
+            registerForm.get('email').touched
+        }"
+        class="form-control"
+        placeholder="Adres e-mail"
+        formControlName="email"
+      />
+      <div class="invalid-feedback">Wprowadź adres e-mail</div>
+    </div>
+
+    <!--Hasło-->
+    <div class="form-group">
+      <input
+        type="password"
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('password').errors &&
+            registerForm.get('password').touched
+        }"
+        class="form-control"
+        formControlName="password"
+        placeholder="Hasło"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          registerForm.get('password').hasError('required') &&
+          registerForm.get('password').touched
+        "
+      >
+        Hasło jest wymagane
+      </div>
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          registerForm.get('password').hasError('minlength') &&
+          registerForm.get('password').touched
+        "
+      >
+        Hasło musi mieć minimum 6 znaków
+      </div>
+    </div>
+
+    <!--Potwierdź hasło-->
+    <div class="form-group">
+      <input
+        type="password"
+        [ngClass]="{
+          'is-invalid':
+            (registerForm.get('confirmPassword').errors &&
+              registerForm.get('confirmPassword').touched) ||
+            (registerForm.get('confirmPassword').touched &&
+              registerForm.hasError('mismatch'))
+        }"
+        class="form-control"
+        formControlName="confirmPassword"
+        placeholder="Potwierdź hasło"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          registerForm.get('confirmPassword').hasError('required') &&
+          registerForm.get('confirmPassword').touched
+        "
+      >
+        Hasło jest wymagane
+      </div>
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          registerForm.hasError('mismatch') &&
+          registerForm.get('confirmPassword').touched
+        "
+      >
+        Hasła nie są takie same
+      </div>
+    </div>
+
+    <!--Administrator/kurier-->
+    <div class="form-check row float-left" style="display: block">
+      <!-- <label class="mr-4" style="width: 100%">
+        <input type="radio" value="Admin" formControlName="role" />
+        <span class="text-dark ml-2" style="font-size: large; font-weight: bold"
+          >Administrator</span
+        >
+      </label> -->
+      <label class="mr-4" style="width: 100%;">
+        <input type="radio" value="Coach" formControlName="role" />
+        <span class="text-dark ml-2" style="font-size: large; font-weight: bold"
+          >Trener</span
+        >
+      </label>
+      <label class="mr-4" style="width: 100%">
+        <input type="radio" value="User" formControlName="role" />
+        <span class="text-dark ml-2" style="font-size: large; font-weight: bold"
+          >Użytkownik</span
+        >
+      </label>
+    </div>
+
+    <!--Specjalizacja-->
+    <div class="form-group" *ngIf="registerForm.get('role').value == 'Coach'">
+      <input
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('specialization').errors &&
+            registerForm.get('specialization').touched
+        }"
+        class="form-control"
+        placeholder="Specjalizacja"
+        formControlName="specialization"
+      />
+      <div class="invalid-feedback">Wprowadź specjalizację</div>
+    </div>
+
+    <!--Numer certyfikatu-->
+    <div class="form-group" *ngIf="registerForm.get('role').value == 'Coach'">
+      <input
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('certificateNumber').errors &&
+            registerForm.get('certificateNumber').touched
+        }"
+        pattern="[0-9]{2}/[0-9]{4}"
+        class="form-control"
+        placeholder="Certyfikat (numer)"
+        formControlName="certificateNumber"
+      />
+      <div class="invalid-feedback">Wprowadź numer certyfikatu</div>
+    </div>
+
+    <!--Nazwa instytucji-->
+    <div class="form-group" *ngIf="registerForm.get('role').value == 'Coach'">
+      <input
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('certificateInstitution').errors &&
+            registerForm.get('certificateInstitution').touched
+        }"
+        class="form-control"
+        placeholder="Certyfikat (instytucja)"
+        formControlName="certificateInstitution"
+      />
+      <div class="invalid-feedback">Wprowadź nazwę instytucji</div>
+    </div>
+
+    <!--Data otrzymania-->
+    <div class="form-group" *ngIf="registerForm.get('role').value == 'Coach'">
+      <input
+        [ngClass]="{
+          'is-invalid':
+            registerForm.get('certificateGainDate').errors &&
+            registerForm.get('certificateGainDate').touched
+        }"
+        bsDatepicker
+        [bsConfig]="bsConfig"
+        type="text"
+        class="form-control"
+        placeholder="Certyfikat (Data otrzymania)"
+        formControlName="certificateGainDate"
+      />
+      <div class="invalid-feedback">Wprowadź datę otrzymania</div>
+    </div>
+
+    <div class="form-group" style="width: 100%">
+      <button
+        type="submit"
+        class="btn btn-outline-success mb-2"
+        style="width: 200px;"
+        [disabled]="!registerForm.valid && registerForm.get('certificateNumber').value.length >= 0"
+        registerForm.valid="!registerForm.valid"
+      >
+        Zarejestruj
+      </button>
+    </div>
+  </form>
+</div>

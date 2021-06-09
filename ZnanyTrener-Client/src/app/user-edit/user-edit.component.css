@@ -1,0 +1,44 @@
+.card {
+    border: rgb(35, 232, 101);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 20px;
+    box-shadow: 0px 42px 38px -32px rgba(166, 166, 166, 1);
+    padding: 5%;
+    margin: 0;
+  }
+  
+  .card-footer {
+    background: transparent;
+  }
+  
+  img {
+    border-radius: 90%;
+  }
+  
+  h1 {
+    font-size: auto;
+    font-weight: bold;
+
+  }
+  
+  p {
+      font-size: auto;
+    font-weight: normal;
+
+  }
+  
+  input {
+      margin-left: 2px;
+      margin-right: 2px;
+      font-size: medium;
+
+      outline: none;
+  }
+  
+  h4 {
+
+      font-weight: bold;
+      font-size: auto;
+  }
+  

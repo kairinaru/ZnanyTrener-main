@@ -1,0 +1,50 @@
+<div
+  id="main-container"
+  class=""
+  style="
+    margin-inline: auto;
+    margin-top: 20px;
+    border: rgb(35, 232, 101);
+    border-style: solid;
+    background: rgb(245, 245, 245);
+    border-width: 2px;
+    height: 800px;
+    width: 1000px;
+    max-height: calc(100vh - 200px); overflow-y: auto;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 42px 38px -32px rgba(166, 166, 166, 1);
+  "
+>
+  <div style="padding-inline: 30%; margin-top: 20px">
+    <form id="form-login" #loginForm="ngForm" class="form-signin">
+      <div style="width: 100%" class="text-center">
+        <h2 style="margin-bottom: 50px; font-weight: bolder">
+          Wyszukaj trenerów w okolicy
+        </h2>
+      </div>
+
+      <input
+        type="text"
+        [(ngModel)]="keyWord"
+        id="keyWord"
+        class="form-control mb-3"
+        name="keyWord"
+        placeholder="Wyszukaj..."
+        (keyup)="filter()"
+        required
+        autofocus=""
+      />
+    </form>
+
+    <!--Lista trenerów goes here-->
+    <div>
+      <div *ngFor="let coach of coaches">
+        <app-coach-preview
+          [coach]="coach"
+          [routerLink]="['/user/', coach.id]"
+        ></app-coach-preview>
+      </div>
+    </div>
+  </div>
+</div>

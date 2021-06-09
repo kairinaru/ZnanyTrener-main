@@ -1,0 +1,90 @@
+<div class="container" style="margin-top: 10px;">
+    <div class="row text-center">
+      <div class="col-sm-4 mb-2">
+        <h1>{{user.firstName.toUpperCase()}} {{user.lastName.toUpperCase()}}</h1>
+      </div>
+      <div class="col-sm-8">
+        <div *ngIf="editForm.dirty" class="alert alert-info">
+          <strong>Uwaga:</strong> Dokonano zmian. Niezapisane dane zostaną utracone.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <img
+            class="card-img-top img-thumbnail"
+            src="{{ user.photoUrl || '../../assets/user.png' }}"
+            alt="{{ user.userName }}"
+          />
+          <div class="card-body">
+              <input style="display: inline-flex; max-width: 300px; margin-bottom: 20px;"  type="file"
+              ng2FileSelect
+              [uploader]="uploader">
+            <div>
+              <strong>Miejscowość: </strong>
+              <p>{{ user.city }}</p>
+            </div>         
+          </div>
+          <div class="card-footer">
+            <button
+              [disabled]="!editForm.dirty && !this.uploader.getNotUploadedItems().length"
+              form="editForm"
+              class="w-100 btn btn-outline-success"
+              style="height: 45px; border-radius: 12px;"
+              type="submit"
+            >
+              Zapisz zmiany
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="card">
+              <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()" >
+                <h4>O sobie: </h4>
+                <textarea
+                  name="description"
+                  rows="6"
+                  class="form-control"
+                  [(ngModel)]="user.description"
+                ></textarea>
+                <h4 class="mt-2">Miejscowość: </h4>
+                <div class="form-inline">
+                  <label for="city" class="ml-1 mr-2">Miejscowość: </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="city"
+                    [(ngModel)]="user.city"
+                  />
+                  <label *ngIf="user.role=='Coach'" for="specialization" class="ml-1 mr-2">Specjalizacja: </label>
+                  <input
+                  *ngIf="user.role=='Coach'"
+                    class="form-control"
+                    type="text"
+                    name="specialization"
+                    [(ngModel)]="user.specialization"
+                  />
+                </div>
+                <div class="form-inline mt-2">
+                    <label for="phoneNumber" class="ml-1 mr-2">Numer telefonu: </label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="phoneNumber"
+                      [(ngModel)]="user.phoneNumber"
+                    />
+                    <label for="email" class="ml-1 mr-2">Email: </label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="email"
+                      [(ngModel)]="user.email"
+                    />
+                  </div>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>

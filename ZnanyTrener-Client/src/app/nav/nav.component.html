@@ -1,0 +1,66 @@
+<nav
+  class="navbar navbar-expand-md bg-light navbar-light mb-0 sticky-top"
+  style="border-bottom: solid; border-color: rgba(35, 232, 101, .80); border-width: 2px; background-color: rgba(220, 250, 220, .80); backdrop-filter: blur(5px);"
+>
+  <a class="navbar-brand"><h3 style="font-weight: bold; cursor: pointer;" [routerLink]="['/find-coach']">ZnanyTrener</h3></a>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul *ngIf="authService.isSignedIn()" class="navbar-nav mr-auto">
+      <li *ngIf="authService.isCoach() || authService.isUser()" class="nav-item active">
+        <a class="p-2 text-dark" [routerLink]="['/edit']"
+          >Edytuj profil<i class="fa fa-pencil ml-2"></i></a
+        >
+      </li>
+      <li *ngIf="authService.isCoach() || authService.isUser()" class="nav-item active">
+        <a class="p-2 text-dark" [routerLink]="['/me']"
+          >Mój profil<i class="fa fa-user ml-2"></i></a
+        >
+      </li>
+      <li *ngIf="authService.isUser()" class="nav-item active">
+        <a class="p-2 text-dark" [routerLink]="['/find-coach']"
+          >Znajdź trenera w okolicy<i class="fa fa-search ml-2"></i></a
+        >
+      </li>
+      <li *ngIf="authService.isAdmin()" class="nav-item">
+        <a class="p-2 text-dark" [routerLink]="['/admin']"
+          >Usuń użytkowników<i class="fa fa-trash ml-2"></i></a
+        >
+      </li>
+      <li *ngIf="authService.isCoach()" class="nav-item">
+        <a class="p-2 text-dark" [routerLink]="['/add-cert']"
+          >Dodaj certyfikat<i class="fa fa-certificate ml-2"></i></a
+        >
+      </li>
+    </ul>
+    <ul *ngIf="!authService.isSignedIn()" class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="p-2 text-dark" [routerLink]="['/find-coach']"
+          >Znajdź trenera w okolicy<i class="fa fa-search ml-2"></i></a
+        >
+      </li>
+    </ul>
+    <form class="form-inline mx-4 my-lg-0">
+      <button
+        *ngIf="authService.isSignedIn()"
+        class="btn btn-outline-secondary"
+        (click)="logout()"
+      >
+        Wyloguj<i class="fa fa-sign-out ml-2"></i>
+      </button>
+      <button
+        *ngIf="!authService.isSignedIn()"
+        class="btn btn-outline-secondary mr-2"
+        [routerLink]="['/login']"
+      >
+      Logowanie<i class="fa fa-sign-in ml-2"></i>
+    </button>
+    <button
+        *ngIf="!authService.isSignedIn()"
+        class="btn btn-outline-secondary"
+        [routerLink]="['/register']"
+      >
+      Rejestracja<i class="fa fa-plus-square-o ml-2"></i>
+    </button>
+    
+    </form>
+  </div>
+</nav>
