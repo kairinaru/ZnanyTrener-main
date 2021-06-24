@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:padding="16dp"
+        android:scrollbars="vertical"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+            android:text="Rejestracja"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+            <EditText
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:id="@+id/userName"
+                android:hint="nazwa uzytkownika"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:id="@+id/firstName"
+                android:hint="imie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:id="@+id/lastName"
+                android:hint="nazwisko"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:id="@+id/description"
+                android:hint="description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:id="@+id/city"
+                android:hint="city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:id="@+id/phone"
+                android:inputType="phone"
+                android:hint="numer telefonu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:id="@+id/email"
+                android:hint="email"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:id="@+id/password"
+                android:inputType="textPassword"
+                android:hint="haslo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:id="@+id/confirmPassword"
+                android:inputType="textPassword"
+                android:hint="powtorz haslo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RadioGroup
+                android:id="@+id/radioRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/radioCoach"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trener" />
+
+                <RadioButton
+                    android:id="@+id/radioUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Klient" 
+                    android:checked="true" />
+
+            </RadioGroup>
+
+            <EditText
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:id="@+id/specialization"
+                android:visibility="gone"
+                android:inputType="text"
+                android:hint="specjalizacja"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:id="@+id/certificateNumber"
+                android:inputType="text"
+                android:visibility="gone"
+                android:hint="numer certyfikatu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:id="@+id/certificateInstitution"
+                android:inputType="text"
+                android:visibility="gone"
+                android:hint="nazwa instytucji"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:text="zarejestruj"
+                android:id="@+id/registerBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
+    
